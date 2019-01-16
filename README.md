@@ -1,2 +1,2 @@
 # FireBlocks
-cmake + SDL + nanogui + glm
+cmake + SDL + nanogui + glm + tinyxml
