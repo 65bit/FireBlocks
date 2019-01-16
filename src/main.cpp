@@ -34,6 +34,19 @@ int main(int _argc, char** _argv)
         return 1;
     }
     
+    // We must call SDL_CreateRenderer in order for draw calls to affect this window.
+    SDL_Renderer* renderer = SDL_CreateRenderer(window, -1, 0);
+    
+    if(renderer==NULL)
+    {
+        std::cout << "Could not create renderer: " << SDL_GetError() << '\n';
+        SDL_Quit();
+        return 1;
+    }
+    
+    // Select the color for drawing. It is set to red here.
+    SDL_SetRenderDrawColor(renderer, 255, 0, 0, 255);
+    
     SDL_Event e;
     bool quit = false;
     while (!quit){
@@ -48,6 +61,13 @@ int main(int _argc, char** _argv)
                 quit = true;
             }
         }
+        
+        // Clear the entire screen to our selected color.
+        SDL_RenderClear(renderer);
+        
+        // Up until now everything was drawn behind the scenes.
+        // This will show the new, red contents of the window.
+        SDL_RenderPresent(renderer);
     }
     
     // Close and destroy the window
