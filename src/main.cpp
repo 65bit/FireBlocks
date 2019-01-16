@@ -1,5 +1,12 @@
+#if defined(FB_OSX)
 #include "SDL2/SDL.h"
 #include "SDL2_net/SDL_net.h"
+#elif defined(FB_WIN)
+#include "SDL.h"
+#include "SDL_net.h"
+#else
+#error "Unsupported platform"
+#endif
 
 #include <iostream>
 

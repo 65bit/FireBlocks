@@ -7,7 +7,6 @@ add_executable(game main.cpp)
 if(WIN32)
 
 elseif(APPLE)
-
 macro(AddExternalFramework fwname appname libpath)
     find_library(FRAMEWORK_${fwname}
         NAMES ${fwname}
