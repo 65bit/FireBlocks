@@ -1,8 +1,8 @@
 #include "OpenGLRenderer.hpp"
-#ifdef _WIN32
-#include "gl_core_4_4_mac.h"
-#else
+#ifdef FB_WIN
 #include "gl_core_4_4.h"
+#else
+#include "gl_core_3_2.h"
 #endif
 
 namespace engine
