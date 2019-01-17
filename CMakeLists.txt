@@ -10,13 +10,18 @@ else()
 	message(FATAL_ERROR "Undefined platform")
 endif()
 
-#includes
+#Includes
+
 set(SDL_INCLUDE_PATH "${CMAKE_SOURCE_DIR}/external/sdl/SDL2-2.0.9_WIN/include")
 set(SDL_NET_INCLUDE_PATH "${CMAKE_SOURCE_DIR}/external/sdl/SDL2_net-2.0.1_WIN/include")
 
-#libs
+#Libs
+
 set(SDL_LIB_PATH)
 set(SDL_NET_LIB_PATH)
+
+#Etc
+set(CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake)
 
 if(WIN32)
 	set(SDL_LIB_PATH "${CMAKE_SOURCE_DIR}/external/sdl/SDL2-2.0.9_WIN/lib/x86")
@@ -27,6 +32,8 @@ elseif(APPLE)
 else()
 	message(FATAL_ERROR "Unsupported platform")
 endif()
+
+#Build 
 
 add_subdirectory(src/engine/)
 add_subdirectory(src/game/)

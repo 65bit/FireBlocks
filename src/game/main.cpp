@@ -25,6 +25,7 @@ int main(int _argc, char** _argv)
 	SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 2);
 	SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
 	SDL_GL_SetAttribute(SDL_GL_DEPTH_SIZE, 24);
+    SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_CORE);
 
     // Create an application window with the following settings:
 	const int width = 640;
@@ -47,6 +48,7 @@ int main(int _argc, char** _argv)
     }
     
 	auto openglContext = SDL_GL_CreateContext(window);
+
 	SDL_GL_MakeCurrent(window, openglContext);
 	std::unique_ptr<engine::SceneRender> sceneRenderer(new engine::SceneRender(width, height, openglContext));
 

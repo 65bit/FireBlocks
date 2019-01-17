@@ -1,5 +1,5 @@
-#include "SceneRenderer.hpp"
-#include "engine\render\opengl_renderer\OpenGLRenderer.hpp"
+#include "engine/render/scene_renderer/SceneRenderer.hpp"
+#include "engine/render/opengl_renderer/OpenGLRenderer.hpp"
 
 namespace engine
 {
