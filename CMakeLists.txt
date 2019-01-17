@@ -28,4 +28,5 @@ else()
 	message(FATAL_ERROR "Unsupported platform")
 endif()
 
+add_subdirectory(src/engine/)
 add_subdirectory(src/game/)
