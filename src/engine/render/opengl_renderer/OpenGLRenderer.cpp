@@ -1,9 +1,5 @@
 #include "OpenGLRenderer.hpp"
-#ifdef FB_WIN
-#include "gl_core_3_3.h"
-#else
 #include "gl_core_3_2.h"
-#endif
 
 namespace engine
 {
