@@ -4,9 +4,6 @@ project(Game)
 
 add_executable(game main.cpp)
 
-if(WIN32)
-
-elseif(APPLE)
 macro(AddExternalFramework fwname appname libpath)
     find_library(FRAMEWORK_${fwname}
         NAMES ${fwname}
@@ -20,10 +17,18 @@ macro(AddExternalFramework fwname appname libpath)
     endif()
 endmacro(AddExternalFramework)
 
-	set(FRAMEWORK_DIR "${CMAKE_SOURCE_DIR}/external/sdl/")
-
-	AddExternalFramework(SDL2 game ${FRAMEWORK_DIR})
-	AddExternalFramework(SDL2_net game ${FRAMEWORK_DIR})
+if(WIN32)
+	include_directories(${SDL_INCLUDE_PATH})
+	include_directories(${SDL_NET_INCLUDE_PATH})
+	
+	AddExternalFramework(SDL2 game ${SDL_LIB_PATH})
+	AddExternalFramework(SDL2main game ${SDL_LIB_PATH})
+	AddExternalFramework(SDL2_net game ${SDL_NET_LIB_PATH})
+	
+	#add_custom_command(TARGET game POST_BUILD COMMAND ${CMAKE_COMMAND} -E copy ${SDL_LIB_PATH}/SDL2.dll ${game_BINARY_DIR}/.)
+elseif(APPLE)
+	AddExternalFramework(SDL2 game ${SDL_LIB_PATH})
+	AddExternalFramework(SDL2_net game ${SDL_NET_LIB_PATH})
 else()
-	message(FATAL_ERROR "Undefined platform")
+	message(FATAL_ERROR "Unsupported platform")
 endif()
