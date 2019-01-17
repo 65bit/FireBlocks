@@ -7,7 +7,7 @@ file(GLOB_RECURSE ENGINE_SOURCE *.cpp)
 file(GLOB_RECURSE RENDER_SOURCES render/*.cpp render/*.hpp)
 
 if(WIN32)
-set (GL_CORE_SRCS ${CMAKE_SOURCE_DIR}/src/engine/render/opengl_renderer/gl_core_4_4.c)
+set (GL_CORE_SRCS ${CMAKE_SOURCE_DIR}/src/engine/render/opengl_renderer/gl_core_3_3.c)
 elseif(APPLE)
 set (GL_CORE_SRCS ${CMAKE_SOURCE_DIR}/src/engine/render/opengl_renderer/gl_core_3_2.c)
 endif()
