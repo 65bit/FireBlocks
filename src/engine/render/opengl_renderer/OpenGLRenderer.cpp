@@ -1,5 +1,5 @@
-#include "OpenGLRenderer.hpp"
-#include "gl_core_3_2.h"
+#include "engine/render/opengl_renderer/OpenGLRenderer.hpp"
+#include "engine/render/opengl_renderer/gl_core_3_2.h"
 
 namespace engine
 {
