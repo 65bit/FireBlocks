@@ -21,7 +21,7 @@ if(WIN32)
 	AddExternalFramework(SDL2 engine ${SDL_LIB_PATH})
 	AddExternalFramework(SDL2main engine ${SDL_LIB_PATH})
 
-	AddSystemFramework(opengl32 engine)
+	target_link_libraries(engine opengl32)
 elseif(APPLE)
 	set(SDL_LIB_PATH "${EXTERNAL_ROOT}/sdl")
 
