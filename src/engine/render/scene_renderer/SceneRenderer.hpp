@@ -5,18 +5,20 @@
 
 namespace engine
 {
-    class SceneRender final
+    namespace render
     {
-    public:
-        SceneRender(int width, int height, void* context);
-        ~SceneRender();
+        class SceneRender final
+        {
+        public:
+            SceneRender(int width, int height);
+            ~SceneRender();
 
-        void startFrame();
-        void renerFrame();
-        void endFrame();
+            void startFrame();
+            void renerFrame();
+            void endFrame();
 
-    private:
-        void* m_context;
-        std::unique_ptr<render::Renderer> m_renderer;
-    };
+        private:
+            std::shared_ptr<render::Renderer> m_renderer;
+        };
+    }
 }

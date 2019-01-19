@@ -28,6 +28,9 @@ endif()
 
 #Create additional IDE filters
 
+file(GLOB_RECURSE GAMEPLAY_SOURCES gameplay/*.hpp gameplay/*.cpp gameplay/*.c gameplay/*.h)
+source_group("gameplay" FILES ${GAMEPLAY_SOURCES})
+
 file(GLOB_RECURSE RENDER_SOURCES render/*.hpp render/*.cpp render/*.c render/*.h)
 source_group("render" FILES ${RENDER_SOURCES})
 

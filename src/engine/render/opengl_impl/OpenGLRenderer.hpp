@@ -6,12 +6,14 @@ namespace engine
 {
     namespace render
     {
-        class OpenglRenderer : public Renderer
+        class OpenGLRenderer : public Renderer
         {
         public:
-            OpenglRenderer(int width, int height, void* context);
-            virtual ~OpenglRenderer() {}
-
+            OpenGLRenderer(int width, int height);
+        
+        private:
+            virtual bool initialize() override;
+            
             //Frame handling
             virtual void startFrame() override;
             virtual void endFrame() override;
@@ -22,11 +24,10 @@ namespace engine
 
             //Debug handling
             virtual void setDebugMode() override;
-
+            
         private:
-            void* m_context;
-			int m_width;
-			int m_height;
+			const int m_width;
+			const int m_height;
         };
     }
 }
