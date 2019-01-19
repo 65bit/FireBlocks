@@ -1,5 +1,4 @@
 # FireBlocks
-
 Issues:
 - To succesfully compile project please use paths withound spaces
 

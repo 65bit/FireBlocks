@@ -2,12 +2,29 @@ cmake_minimum_required(VERSION 3.6.2)
 
 project(Engine)
 
+include(Utils)
+
 file(GLOB_RECURSE ENGINE_INCLUDE *.hpp *.h)
 file(GLOB_RECURSE ENGINE_SOURCE *.cpp *.c)
 
-include_directories(${CMAKE_SOURCE_DIR}/src)
+include_directories(${MODULES_ROOT})
 
 add_library(engine ${ENGINE_INCLUDE} ${ENGINE_SOURCE})
+
+#Add necessary libraries
+
+if(WIN32)
+	set(SDL_LIB_PATH "${EXTERNAL_ROOT}/sdl/SDL2-2.0.9_WIN/lib/x86")
+
+	AddExternalFramework(SDL2 engine ${SDL_LIB_PATH})
+	AddExternalFramework(SDL2main game ${SDL_LIB_PATH})
+
+	AddSystemFramework(opengl32 engine)
+elseif(APPLE)
+	set(SDL_LIB_PATH "${EXTERNAL_ROOT}/sdl")
+
+	AddExternalFramework(SDL2 engine ${SDL_LIB_PATH})
+endif()
 
 #Create additional IDE filters
 
