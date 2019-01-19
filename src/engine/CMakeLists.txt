@@ -14,10 +14,12 @@ add_library(engine ${ENGINE_INCLUDE} ${ENGINE_SOURCE})
 #Add necessary libraries
 
 if(WIN32)
+	include_directories("${EXTERNAL_ROOT}/sdl/SDL2-2.0.9_WIN/include")
+	
 	set(SDL_LIB_PATH "${EXTERNAL_ROOT}/sdl/SDL2-2.0.9_WIN/lib/x86")
-
+	
 	AddExternalFramework(SDL2 engine ${SDL_LIB_PATH})
-	AddExternalFramework(SDL2main game ${SDL_LIB_PATH})
+	AddExternalFramework(SDL2main engine ${SDL_LIB_PATH})
 
 	AddSystemFramework(opengl32 engine)
 elseif(APPLE)
