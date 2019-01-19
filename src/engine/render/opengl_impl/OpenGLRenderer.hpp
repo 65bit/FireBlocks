@@ -26,8 +26,8 @@ namespace engine
             virtual void setDebugMode() override;
             
         private:
-			const int m_width;
-			const int m_height;
+            const int m_width;
+            const int m_height;
         };
     }
 }
