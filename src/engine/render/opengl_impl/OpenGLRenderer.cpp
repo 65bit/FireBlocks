@@ -5,7 +5,7 @@ namespace engine
 {
     namespace render
     {
-        OpenGLRenderer::OpenGLRenderer(int width, int height)
+        OpenGLRenderer::OpenGLRenderer(U32 width, U32 height)
             : m_width(width)
             , m_height(height)
         {

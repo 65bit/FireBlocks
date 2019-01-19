@@ -11,20 +11,23 @@ namespace engine
         : public Window
         {
             using Parent = Window;
-            
+
         public:
-            OpenGLWindow(int width, int height);
+            OpenGLWindow(U32 width, U32 height);
             virtual ~OpenGLWindow() throw() override;
-            
+
         private:
             virtual bool initialize() override;
             virtual void present() override;
-            
+
+            virtual U32 getWidth() const override;
+            virtual U32 getHeight() const override;
+
         private:
             bool m_initialized;
             
-            const int m_width;
-            const int m_height;
+            const U32 m_width;
+            const U32 m_height;
             
             SDL_Window* m_window;
             SDL_GLContext m_context;

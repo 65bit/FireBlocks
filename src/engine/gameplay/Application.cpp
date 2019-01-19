@@ -12,15 +12,15 @@ namespace engine
             {
                 return;
             }
-            
-            const int screenWidth = 640;
-            const int screenHeight = 480;
-            
+
+            const U32 screenWidth = 640;
+            const U32 screenHeight = 480;
+
             m_window = render::Window::create(screenWidth, screenHeight);
             m_sceneRenderer = std::make_shared<render::SceneRender>(screenWidth, screenHeight);
-            
+
             bool appClosed = false;
-            
+
             while(!appClosed)
             {
                 SDL_Event event;

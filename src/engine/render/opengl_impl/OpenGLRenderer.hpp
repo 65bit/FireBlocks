@@ -1,6 +1,7 @@
 #pragma once
 
 #include "engine/render/Renderer.hpp"
+#include "engine/Types.hpp"
 
 namespace engine
 {
@@ -9,7 +10,7 @@ namespace engine
         class OpenGLRenderer : public Renderer
         {
         public:
-            OpenGLRenderer(int width, int height);
+            OpenGLRenderer(U32 width, U32 height);
         
         private:
             virtual bool initialize() override;

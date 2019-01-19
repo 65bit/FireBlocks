@@ -4,7 +4,7 @@ namespace engine
 {
     namespace render
     {
-        OpenGLWindow::OpenGLWindow(int width, int height)
+        OpenGLWindow::OpenGLWindow(U32 width, U32 height)
         : m_initialized(false)
         , m_width(width)
         , m_height(height)
@@ -80,7 +80,7 @@ namespace engine
             return true;
         }
 
-        std::shared_ptr<Window> Window::create(int width, int height)
+        std::shared_ptr<Window> Window::create(U32 width, U32 height)
         {
             std::shared_ptr<Window> window = std::make_shared<OpenGLWindow>(width, height);
             
@@ -91,7 +91,7 @@ namespace engine
             
             return window;
         }
-        
+
         void OpenGLWindow::present()
         {
             if(!m_initialized)
@@ -100,6 +100,16 @@ namespace engine
             }
             
             SDL_GL_SwapWindow(m_window);
+        }
+
+        U32 OpenGLWindow::getWidth() const
+        {
+            return m_width;
+        }
+
+        U32 OpenGLWindow::getHeight() const
+        {
+            return m_height;
         }
     }
 }
