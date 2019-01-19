@@ -12,7 +12,11 @@ namespace engine
 
         SceneRender::~SceneRender()
         {
+        }
 
+        void SceneRender::setScene(std::shared_ptr<Scene> scene)
+        {
+            m_scene = scene;
         }
 
         void SceneRender::startFrame()
@@ -22,7 +26,17 @@ namespace engine
 
         void SceneRender::renerFrame()
         {
-
+            if (!m_scene)
+            {
+                return;
+            }
+            auto root = m_scene->getRoot();
+            if (!root)
+            {
+                return;
+            }
+            
+            //TODO: get root, gather all meshes with positions and materials
         }
 
         void SceneRender::endFrame()
