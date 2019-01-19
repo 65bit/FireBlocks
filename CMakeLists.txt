@@ -12,7 +12,7 @@ elseif(APPLE)
 	add_definitions(-DFB_OSX)
 endif()
 
-set(MODULES_INCLUDE_ROOT "${CMAKE_SOURCE_DIR}/src")
+set(MODULES_ROOT "${CMAKE_SOURCE_DIR}/src")
 set(EXTERNAL_ROOT "${CMAKE_SOURCE_DIR}/external")
 
 set(CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake)

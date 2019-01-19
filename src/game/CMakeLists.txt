@@ -4,7 +4,7 @@ project(Game)
 
 add_executable(game main.cpp)
 
-include_directories(${MODULES_INCLUDE_ROOT})
+include_directories(${MODULES_ROOT})
 
 if(WIN32)
 	#https://docs.microsoft.com/en-us/visualstudio/ide/reference/pre-build-event-post-build-event-command-line-dialog-box?view=vs-2017

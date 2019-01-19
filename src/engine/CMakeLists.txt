@@ -7,7 +7,7 @@ include(Utils)
 file(GLOB_RECURSE ENGINE_INCLUDE *.hpp *.h)
 file(GLOB_RECURSE ENGINE_SOURCE *.cpp *.c)
 
-include_directories(${MODULES_INCLUDE_ROOT})
+include_directories(${MODULES_ROOT})
 
 add_library(engine ${ENGINE_INCLUDE} ${ENGINE_SOURCE})
 
