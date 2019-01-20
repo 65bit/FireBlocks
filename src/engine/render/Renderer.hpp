@@ -2,6 +2,8 @@
 
 #include <memory>
 
+#include "engine/render/Rect.hpp"
+
 namespace engine
 {
     namespace render
@@ -14,7 +16,12 @@ namespace engine
             Stencil,
             All
         };
-        
+
+        enum class DebugMode
+        {
+            validateApiCalls
+        };
+
         class Renderer
         {
         public:
@@ -27,11 +34,11 @@ namespace engine
             virtual void endFrame() = 0;
             virtual void renderFrame() = 0;
 
-            virtual void setViewport() = 0;
+            virtual void setViewport(const Rect& viewport) = 0;
             virtual void clear(ClearMask mask) = 0;
 
             //Debug handling
-            virtual void setDebugMode() = 0;
+            virtual void setDebugMode(DebugMode mode, bool enabled) = 0;
             
             // Implement in impl module
             static std::shared_ptr<Renderer> create(int  width, int height);

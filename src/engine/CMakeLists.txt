@@ -28,6 +28,10 @@ elseif(APPLE)
 	AddExternalFramework(SDL2 engine ${SDL_LIB_PATH})
 endif()
 
+#Adding additional Includes
+
+include_directories("${EXTERNAL_ROOT}/glm")
+
 #Create additional IDE filters
 
 file(GLOB_RECURSE GAMEPLAY_SOURCES gameplay/*.hpp gameplay/*.cpp gameplay/*.c gameplay/*.h)

@@ -11,4 +11,8 @@ if(WIN32)
 	add_custom_command(TARGET game POST_BUILD COMMAND ${CMAKE_COMMAND} -E copy ${EXTERNAL_ROOT}/sdl/SDL2-2.0.9_WIN/lib/x86/SDL2.dll $(OutDir))
 endif()
 
+#Adding additional Includes
+
+include_directories("${EXTERNAL_ROOT}/glm")
+
 target_link_libraries(game engine)

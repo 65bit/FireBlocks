@@ -8,6 +8,7 @@ namespace engine
         SceneRender::SceneRender(int width, int height)
         {
             m_renderer = Renderer::create(width, height);
+            m_renderer->setViewport(Rect{ glm::i32vec2(0, 0), glm::i32vec2(width, height) });
         }
 
         SceneRender::~SceneRender()

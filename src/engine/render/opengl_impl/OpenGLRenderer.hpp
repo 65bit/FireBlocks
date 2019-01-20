@@ -11,7 +11,7 @@ namespace engine
         {
         public:
             OpenGLRenderer(U32 width, U32 height);
-        
+
         private:
             virtual bool initialize() override;
             
@@ -20,15 +20,18 @@ namespace engine
             virtual void endFrame() override;
             virtual void renderFrame() override;
 
-            virtual void setViewport() override;
+            virtual void setViewport(const Rect& viewport) override;
             virtual void clear(ClearMask mask) override;
 
             //Debug handling
-            virtual void setDebugMode() override;
-            
+            virtual void setDebugMode(DebugMode mode, bool enabled) override;
+            void checkGLError(const char* fromFunction);
+
         private:
-            const int m_width;
-            const int m_height;
+            U32 m_width;
+            U32 m_height;
+            Rect m_viewport;
+            bool m_validateApiCalls;
         };
     }
 }
