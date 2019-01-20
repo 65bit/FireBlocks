@@ -51,7 +51,7 @@ public:
     template<typename T, typename... Args>
     void addComponent(Args&&... args)
     {
-        const auto id = T::ComponentId();
+        const auto id = T::ComponentIdStatic();
         
         if(m_components.count(id))
         {
@@ -64,7 +64,7 @@ public:
     template<typename T>
     std::shared_ptr<T> getComponent()
     {
-        const auto id = T::ComponentId();
+        const auto id = T::ComponentIdStatic();
         
         if(!m_components.count(id))
         {
@@ -73,7 +73,7 @@ public:
         
         auto component = m_components.at(id);
         
-        if(component.ComponentId() != id)
+        if(component->componentId() != id)
         {
             return nullptr;
         }
