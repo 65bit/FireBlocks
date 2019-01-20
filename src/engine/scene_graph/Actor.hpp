@@ -11,7 +11,7 @@ namespace engine {
 
 class Actor{
 public:
-    using Components = std::map<U64, std::shared_ptr<Component>>;
+    using Components = std::map<Component::Id, std::shared_ptr<Component>>;
     using Childs = std::vector<std::shared_ptr<Actor>>;
 public:
     virtual ~Actor() = default;
@@ -48,21 +48,32 @@ public:
 
     const Childs& getChilds() const { return m_children; }
 
-    template <class ComponetClass> // TODO: getComponent without ID
-    std::shared_ptr<ComponetClass> getComponent(U32 id) {
-        const auto foundIt = m_components.find(id);
-        if (foundIt != m_components.end()) {
-            std::shared_ptr<Component> base(foundIt->second);
-            std::shared_ptr<ComponetClass> component(std::static_pointer_cast<ComponetClass>(base));
-            return component;
+    template<typename T, typename... Args>
+    void addComponent(Args&&... args)
+    {
+        const auto id = T::ComponentId();
+        
+        if(m_components.count(id))
+        {
+            return;
         }
-        else {
-            return std::shared_ptr<ComponetClass>();
-        }
+        
+        m_components[id] = std::make_shared<T>(std::forward<Args>(args)...);
     }
-
-    void addComponent(std::shared_ptr<Component> component) { m_components[component->getId()] = component; }
-
+    
+    template<typename T>
+    std::shared_ptr<T> getComponent()
+    {
+        const auto id = T::ComponentId();
+        
+        if(m_components.count(id))
+        {
+            return m_components.at(id);
+        }
+        
+        return nullptr;
+    }
+    
 private:
     Components m_components;
     Childs m_children;

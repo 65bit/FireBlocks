@@ -12,6 +12,8 @@ elseif(APPLE)
 	add_definitions(-DFB_OSX)
 endif()
 
+set(CMAKE_CXX_STANDARD 11)
+
 set(MODULES_ROOT "${CMAKE_SOURCE_DIR}/src")
 set(EXTERNAL_ROOT "${CMAKE_SOURCE_DIR}/external")
 

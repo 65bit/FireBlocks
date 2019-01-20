@@ -10,6 +10,9 @@ namespace engine
     class Component
     {
     public:
+        using Id = size_t;
+        
+    public:
         Component() {}
         virtual ~Component() {}
 
@@ -24,4 +27,16 @@ namespace engine
         U32 m_componentId;
         std::weak_ptr<Actor> m_owner;
     };
+}
+
+#define GENERATE_COMPONENT_METADATA(__CLASS__) \
+static std::string ComponentName() \
+{ \
+    return #__CLASS__; \
+} \
+ \
+static Component::Id ComponentId() \
+{ \
+    std::hash<std::string> hash; \
+    return hash(ComponentName()); \
 }

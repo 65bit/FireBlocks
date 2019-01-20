@@ -14,7 +14,7 @@ namespace engine
             
         }
         
-        OpenGLWindow::~OpenGLWindow() throw()
+        OpenGLWindow::~OpenGLWindow()
         {
             if(m_context)
             {

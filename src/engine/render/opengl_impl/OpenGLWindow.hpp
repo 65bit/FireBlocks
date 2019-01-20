@@ -14,7 +14,7 @@ namespace engine
 
         public:
             OpenGLWindow(U32 width, U32 height);
-            virtual ~OpenGLWindow() throw() override;
+            virtual ~OpenGLWindow() override;
 
         private:
             virtual bool initialize() override;
