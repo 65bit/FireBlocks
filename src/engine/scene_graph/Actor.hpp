@@ -66,12 +66,19 @@ public:
     {
         const auto id = T::ComponentId();
         
-        if(m_components.count(id))
+        if(!m_components.count(id))
         {
-            return m_components.at(id);
+            return nullptr;
         }
         
-        return nullptr;
+        auto component = m_components.at(id);
+        
+        if(component.ComponentId() != id)
+        {
+            return nullptr;
+        }
+        
+        return std::static_pointer_cast<T>(component);
     }
     
 private:
