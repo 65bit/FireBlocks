@@ -1,5 +1,6 @@
-#include "engine/render/scene_renderer/SceneRenderer.hpp"
+#include "engine/render/SceneRenderer.hpp"
 #include "engine/render/Renderer.hpp"
+#include "engine/math/Rect.hpp"
 
 namespace engine
 {
@@ -8,14 +9,14 @@ namespace engine
         SceneRender::SceneRender(int width, int height)
         {
             m_renderer = Renderer::create(width, height);
-            m_renderer->setViewport(Rect{ glm::i32vec2(0, 0), glm::i32vec2(width, height) });
+            m_renderer->setViewport(math::Rect{ glm::i32vec2(0, 0), glm::i32vec2(width, height) });
         }
 
         SceneRender::~SceneRender()
         {
         }
 
-        void SceneRender::setScene(std::shared_ptr<Scene> scene)
+        void SceneRender::setScene(std::shared_ptr<gameplay::Scene> scene)
         {
             m_scene = scene;
         }

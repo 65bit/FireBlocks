@@ -3,7 +3,7 @@
 #include <memory>
 
 #include "engine/render/Renderer.hpp"
-#include "engine/scene_graph/Scene.hpp"
+#include "engine/gameplay/Scene.hpp"
 
 namespace engine
 {
@@ -15,8 +15,8 @@ namespace engine
             SceneRender(int width, int height);
             ~SceneRender();
 
-            void setScene(std::shared_ptr<Scene> scene);
-            std::shared_ptr<Scene> getScene() const { return m_scene; }
+            void setScene(std::shared_ptr<gameplay::Scene> scene);
+            std::shared_ptr<gameplay::Scene> getScene() const { return m_scene; }
 
             void startFrame();
             void renerFrame();
@@ -24,7 +24,7 @@ namespace engine
 
         private:
             std::shared_ptr<render::Renderer> m_renderer;
-            std::shared_ptr<Scene> m_scene;
+            std::shared_ptr<gameplay::Scene> m_scene;
         };
     }
 }

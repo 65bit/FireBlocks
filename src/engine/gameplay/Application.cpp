@@ -1,7 +1,9 @@
 #include "engine/gameplay/Applicaion.hpp"
 #include "engine/render/Window.hpp"
+#include "engine/render/SceneRenderer.hpp"
+#include "engine/gameplay/Actor.hpp"
+#include "engine/gameplay/Scene.hpp"
 #include "engine/SDLUtils.hpp"
-#include "engine/scene_graph/Scene.hpp"
 
 namespace engine
 {
@@ -22,9 +24,6 @@ namespace engine
             m_sceneRenderer = std::make_shared<render::SceneRender>(screenWidth, screenHeight);
 
             auto scene = std::make_shared<Scene>();
-            auto root = std::make_shared<Actor>();
-            scene->setRoot(root);
-
             m_sceneRenderer->setScene(scene);
 
             bool appClosed = false;

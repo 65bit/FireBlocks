@@ -67,7 +67,7 @@ namespace engine
 
         }
 
-        void OpenGLRenderer::setViewport(const Rect& viewport)
+        void OpenGLRenderer::setViewport(const math::Rect& viewport)
         {
             m_viewport = viewport;
             glViewport(m_viewport.left.x, m_viewport.left.y, m_viewport.size.x, m_viewport.size.y);

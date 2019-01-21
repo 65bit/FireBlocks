@@ -20,7 +20,7 @@ namespace engine
             virtual void endFrame() override;
             virtual void renderFrame() override;
 
-            virtual void setViewport(const Rect& viewport) override;
+            virtual void setViewport(const math::Rect& viewport) override;
             virtual void clear(ClearMask mask) override;
 
             //Debug handling
@@ -30,7 +30,7 @@ namespace engine
         private:
             U32 m_width;
             U32 m_height;
-            Rect m_viewport;
+            math::Rect m_viewport;
             bool m_validateApiCalls;
         };
     }

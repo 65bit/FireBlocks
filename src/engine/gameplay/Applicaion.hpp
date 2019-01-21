@@ -1,6 +1,6 @@
 #pragma once
 
-#include "engine/render/scene_renderer/SceneRenderer.hpp"
+#include "engine/render/SceneRenderer.hpp"
 #include "engine/render/Window.hpp"
 
 namespace engine

@@ -2,7 +2,7 @@
 
 #include <memory>
 
-#include "engine/render/Rect.hpp"
+#include "engine/math/Rect.hpp"
 
 namespace engine
 {
@@ -34,7 +34,7 @@ namespace engine
             virtual void endFrame() = 0;
             virtual void renderFrame() = 0;
 
-            virtual void setViewport(const Rect& viewport) = 0;
+            virtual void setViewport(const math::Rect& viewport) = 0;
             virtual void clear(ClearMask mask) = 0;
 
             //Debug handling

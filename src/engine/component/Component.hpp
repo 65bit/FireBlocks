@@ -7,28 +7,33 @@
 
 namespace engine
 {
-    class Actor;
-    class Component
-    {
-    public:
-        using Id = size_t;
-        
-    public:
-        Component() {}
-        virtual ~Component() {}
+	namespace gameplay
+	{
+		class Actor;
+	}
 
-        virtual bool init() { return true; };
-        virtual void deinit() {};
+	namespace component
+	{
+		class Component
+		{
+		public:
+			using Id = size_t;
 
-        virtual void update(F32 delta) {};
+		public:
+			Component(std::weak_ptr<gameplay::Actor> owner);
+			virtual ~Component() = default;
 
-        virtual Id componentId() const = 0;
-        virtual std::string componentName() const = 0;
-        
-        void setOwner(std::weak_ptr<Actor> owner) { m_owner = owner; }
-    protected:
-        std::weak_ptr<Actor> m_owner;
-    };
+			virtual bool init() { return true; }
+			virtual void deinit() {};
+			virtual void update(F32 delta) {};
+
+			virtual Id componentId() const = 0;
+			virtual std::string componentName() const = 0;
+
+		protected:
+			std::weak_ptr<gameplay::Actor> m_owner;
+		};
+	}
 }
 
 #define GENERATE_COMPONENT_METADATA(__CLASS__) \

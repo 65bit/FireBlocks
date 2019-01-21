@@ -1,15 +1,18 @@
 #include <iostream>
 
 #include <engine/gameplay/Applicaion.hpp>
-#include <engine/Component.hpp>
-#include <engine/scene_graph/Actor.hpp>
+#include <engine/component/Component.hpp>
+#include <engine/gameplay/Actor.hpp>
 
 class MyComponent
-: public engine::Component
+: public engine::component::Component
 {
+	using Parent = engine::component::Component;
+
 public:
-    MyComponent(int value)
-    : m_value(value)
+    MyComponent(std::weak_ptr<engine::gameplay::Actor> owner, int value)
+    : Parent(owner)
+	, m_value(value)
     {
         
     }
@@ -26,9 +29,17 @@ private:
 };
 
 class MyWrongComponent
-: public engine::Component
+: public engine::component::Component
 {
+	using Parent = engine::component::Component;
+
 public:
+	MyWrongComponent(std::weak_ptr<engine::gameplay::Actor> owner)
+		: Parent(owner)
+	{
+
+	}
+
     GENERATE_COMPONENT_METADATA(MyWrongComponent)
 };
 
@@ -39,13 +50,13 @@ class Foo
 
 int main(int _argc, char** _argv)
 {
-    engine::Actor actor;
-    actor.addComponent<MyComponent>(700);
+    auto actor = std::make_shared<engine::gameplay::Actor>();
+    actor->addComponent<MyComponent>(700);
     
-    auto component = actor.getComponent<MyComponent>();
+    auto component = actor->getComponent<MyComponent>();
     component->foo();
     
-    auto wrong = actor.getComponent<MyWrongComponent>();
+    auto wrong = actor->getComponent<MyWrongComponent>();
     
     // This line will not compile because Foo is not a component
     //actor.getComponent<Foo>();

@@ -6,9 +6,12 @@
 
 namespace engine
 {
-    struct Rect
+    namespace math
     {
-        glm::i32vec2 left;
-        glm::i32vec2 size;
-    };
+        struct Rect
+        {
+            glm::i32vec2 left;
+            glm::i32vec2 size;
+        };
+    }
 }
