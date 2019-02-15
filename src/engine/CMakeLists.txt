@@ -30,6 +30,7 @@ endif()
 
 include_directories(${MODULES_ROOT})
 include_directories("${EXTERNAL_ROOT}/glm")
+include_directories("${EXTERNAL_ROOT}/OBJ-Loader"/Source)
 
 #Create additional IDE filters
 
